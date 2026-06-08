@@ -7,394 +7,380 @@
 <meta name="description" content="DevOps Engineer specializing in CI/CD automation, containerization, and cloud infrastructure. Dhaka, Bangladesh.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Sora:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0a0e0d;
-    --bg-2:#0e1413;
-    --panel:#111917;
-    --line:#1d2724;
-    --line-2:#26332f;
-    --ink:#e8efe9;
-    --ink-dim:#8b9b94;
-    --ink-faint:#5a6b64;
-    --green:#34e2a0;
-    --green-deep:#0fae77;
-    --amber:#f0b429;
-    --glow:rgba(52,226,160,.18);
-    --mono:'JetBrains Mono',ui-monospace,monospace;
-    --sans:'Sora',system-ui,sans-serif;
+    --bg:#070b0a;--bg-2:#0c1211;--panel:#0f1716;--panel-2:#121d1b;
+    --line:#1a2421;--line-2:#27352f;--ink:#eaf2ec;--ink-dim:#8ea29a;--ink-faint:#566860;
+    --green:#3ee9a4;--green-deep:#11b27c;--amber:#f4b740;
+    --glow:rgba(62,233,164,.20);
+    --mono:'JetBrains Mono',ui-monospace,monospace;--sans:'Sora',system-ui,sans-serif;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:var(--sans);
-    font-weight:300;
-    line-height:1.6;
-    overflow-x:hidden;
-    -webkit-font-smoothing:antialiased;
-  }
-  /* layered background */
-  body::before{
-    content:"";position:fixed;inset:0;z-index:-2;
-    background:
-      radial-gradient(900px 600px at 80% -10%, rgba(52,226,160,.10), transparent 60%),
-      radial-gradient(800px 500px at -10% 110%, rgba(240,180,41,.06), transparent 55%),
-      var(--bg);
-  }
-  body::after{
-    content:"";position:fixed;inset:0;z-index:-1;opacity:.4;
-    background-image:
-      linear-gradient(var(--line) 1px,transparent 1px),
-      linear-gradient(90deg,var(--line) 1px,transparent 1px);
-    background-size:54px 54px;
-    -webkit-mask-image:radial-gradient(circle at 50% 30%,#000 0%,transparent 75%);
-    mask-image:radial-gradient(circle at 50% 30%,#000 0%,transparent 75%);
-  }
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  body::before{content:"";position:fixed;inset:0;z-index:-3;background:radial-gradient(1000px 680px at 78% -8%,rgba(62,233,164,.11),transparent 60%),radial-gradient(820px 520px at -8% 112%,rgba(244,183,64,.06),transparent 55%),var(--bg)}
+  body::after{content:"";position:fixed;inset:0;z-index:-2;opacity:.5;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(circle at 50% 22%,#000,transparent 78%);mask-image:radial-gradient(circle at 50% 22%,#000,transparent 78%)}
+  #spot{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(420px circle at var(--mx,50%) var(--my,30%),rgba(62,233,164,.07),transparent 60%)}
   ::selection{background:var(--green);color:#04110c}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 28px}
+  #prog{position:fixed;top:0;left:0;height:2px;width:0;z-index:60;background:linear-gradient(90deg,var(--green),var(--amber));box-shadow:0 0 12px var(--glow)}
 
-  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
-
-  /* ---------- NAV ---------- */
-  nav{
-    position:fixed;top:0;left:0;right:0;z-index:50;
-    backdrop-filter:blur(14px);
-    background:rgba(10,14,13,.72);
-    border-bottom:1px solid var(--line);
-  }
-  .nav-in{max-width:1080px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between}
-  .brand{font-family:var(--mono);font-weight:700;font-size:14px;letter-spacing:.5px;display:flex;align-items:center;gap:9px}
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(16px);background:rgba(7,11,10,.7);border-bottom:1px solid var(--line)}
+  .nav-in{max-width:1100px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between}
+  .brand{font-family:var(--mono);font-weight:700;font-size:14px;display:flex;align-items:center;gap:9px}
   .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green);animation:pulse 2.4s ease-in-out infinite}
-  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-  .nav-links{display:flex;gap:26px;font-family:var(--mono);font-size:12.5px}
-  .nav-links a{color:var(--ink-dim);text-decoration:none;transition:color .2s;position:relative}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  .nav-links{display:flex;gap:24px;font-family:var(--mono);font-size:12.5px}
+  .nav-links a{color:var(--ink-dim);text-decoration:none;transition:color .2s}
   .nav-links a:hover{color:var(--green)}
   .nav-links a::before{content:"./";color:var(--ink-faint)}
-  @media(max-width:680px){.nav-links{display:none}}
+  @media(max-width:720px){.nav-links{display:none}}
 
-  /* ---------- HERO ---------- */
-  header{min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;position:relative}
-  .term-tag{
-    font-family:var(--mono);font-size:12.5px;color:var(--green);
-    border:1px solid var(--line-2);border-radius:100px;padding:7px 16px;
-    display:inline-flex;align-items:center;gap:9px;background:var(--panel);
-    opacity:0;animation:rise .7s .1s forwards;
-  }
+  header{min-height:100vh;display:flex;align-items:center;padding:120px 0 70px}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;width:100%}
+  @media(max-width:880px){.hero-grid{grid-template-columns:1fr;gap:34px}}
+  .term-tag{font-family:var(--mono);font-size:12.5px;color:var(--green);border:1px solid var(--line-2);border-radius:100px;padding:7px 16px;display:inline-flex;align-items:center;gap:9px;background:var(--panel);opacity:0;animation:rise .7s .1s forwards}
   .term-tag .blink{width:7px;height:14px;background:var(--green);animation:blink 1.1s steps(2) infinite}
   @keyframes blink{0%,50%{opacity:1}51%,100%{opacity:0}}
-  h1{
-    font-weight:800;font-size:clamp(44px,8vw,92px);line-height:.98;letter-spacing:-.03em;
-    margin:26px 0 18px;
-  }
+  h1{font-weight:800;font-size:clamp(42px,7.5vw,86px);line-height:.97;letter-spacing:-.035em;margin:24px 0 18px}
   h1 .l1{display:block;opacity:0;animation:rise .8s .2s forwards}
   h1 .l2{display:block;color:transparent;-webkit-text-stroke:1.5px var(--green-deep);opacity:0;animation:rise .8s .32s forwards}
-  .role{font-family:var(--mono);font-size:clamp(15px,2.4vw,20px);color:var(--ink-dim);opacity:0;animation:rise .8s .44s forwards}
+  .role{font-family:var(--mono);font-size:clamp(14px,2.2vw,18px);color:var(--ink-dim);opacity:0;animation:rise .8s .44s forwards}
   .role b{color:var(--amber);font-weight:500}
-  .hero-sub{max-width:600px;margin-top:24px;color:var(--ink-dim);font-size:16.5px;opacity:0;animation:rise .8s .56s forwards}
-  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px;opacity:0;animation:rise .8s .68s forwards}
-  .btn{
-    font-family:var(--mono);font-size:13px;font-weight:500;text-decoration:none;
-    padding:13px 22px;border-radius:8px;display:inline-flex;align-items:center;gap:9px;transition:.22s;
-  }
+  .hero-sub{max-width:540px;margin-top:22px;color:var(--ink-dim);font-size:16px;opacity:0;animation:rise .8s .56s forwards}
+  .hero-cta{display:flex;gap:13px;flex-wrap:wrap;margin-top:32px;opacity:0;animation:rise .8s .68s forwards}
+  .btn{font-family:var(--mono);font-size:13px;font-weight:500;text-decoration:none;padding:13px 22px;border-radius:8px;display:inline-flex;align-items:center;gap:9px;transition:.22s}
   .btn-primary{background:var(--green);color:#04110c;font-weight:700}
-  .btn-primary:hover{box-shadow:0 0 28px var(--glow);transform:translateY(-2px)}
+  .btn-primary:hover{box-shadow:0 0 30px var(--glow);transform:translateY(-2px)}
   .btn-ghost{border:1px solid var(--line-2);color:var(--ink)}
   .btn-ghost:hover{border-color:var(--green);color:var(--green);transform:translateY(-2px)}
-  @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 
-  /* stat strip */
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:64px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;opacity:0;animation:rise .8s .8s forwards}
-  .stat{background:var(--panel);padding:22px 20px}
-  .stat .n{font-family:var(--mono);font-weight:800;font-size:clamp(22px,3vw,30px);color:var(--green)}
-  .stat .k{font-size:12px;color:var(--ink-faint);font-family:var(--mono);margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
-  @media(max-width:680px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .term{background:var(--panel);border:1px solid var(--line-2);border-radius:12px;overflow:hidden;box-shadow:0 30px 80px -30px rgba(0,0,0,.8);opacity:0;animation:rise .9s .6s forwards}
+  .term-bar{display:flex;align-items:center;gap:7px;padding:12px 14px;border-bottom:1px solid var(--line);background:var(--bg-2)}
+  .term-bar i{width:11px;height:11px;border-radius:50%;display:inline-block}
+  .term-bar .r{background:#ff5f57}.term-bar .y{background:#febc2e}.term-bar .g{background:#28c840}
+  .term-bar span{margin-left:8px;font-family:var(--mono);font-size:11.5px;color:var(--ink-faint)}
+  .term-body{padding:18px;font-family:var(--mono);font-size:13px;line-height:1.85;min-height:212px}
+  .term-body .p{color:var(--green)}.term-body .c{color:var(--ink)}.term-body .out{color:var(--ink-dim)}.term-body .ok{color:var(--green)}.term-body .am{color:var(--amber)}
+  #cursor{display:inline-block;width:8px;height:15px;background:var(--green);vertical-align:-2px;animation:blink 1.05s steps(2) infinite}
 
-  /* ---------- SECTION SHELL ---------- */
-  section{padding:90px 0;position:relative}
-  .sec-head{display:flex;align-items:center;gap:16px;margin-bottom:48px}
+  .pipeline{display:flex;align-items:flex-start;margin-top:60px;border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:18px 8px;overflow:hidden;opacity:0;animation:rise .8s .85s forwards}
+  .stage{flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;min-width:0}
+  .stage .ic{width:38px;height:38px;border-radius:9px;border:1px solid var(--line-2);display:grid;place-items:center;font-size:15px;color:var(--ink-faint);transition:.4s}
+  .stage .nm{font-family:var(--mono);font-size:11px;color:var(--ink-faint);transition:.4s;text-align:center}
+  .stage.active .ic{border-color:var(--green);color:var(--green);box-shadow:0 0 18px var(--glow);background:rgba(62,233,164,.07)}
+  .stage.active .nm{color:var(--green)}
+  .stage.done .ic{border-color:var(--green-deep);color:var(--green-deep)}
+  .conn{flex:0 0 28px;height:2px;background:var(--line-2);position:relative;overflow:hidden;margin-top:18px}
+  .conn::after{content:"";position:absolute;inset:0;background:var(--green);transform:translateX(-101%);transition:transform .5s}
+  .conn.flow::after{transform:none}
+  @media(max-width:720px){.pipeline .nm{display:none}.conn{flex-basis:14px}}
+
+  section{padding:92px 0;position:relative}
+  .sec-head{display:flex;align-items:center;gap:16px;margin-bottom:46px}
   .sec-head .idx{font-family:var(--mono);color:var(--green);font-size:14px;font-weight:700}
   .sec-head h2{font-weight:700;font-size:clamp(26px,4vw,40px);letter-spacing:-.02em}
   .sec-head .rule{flex:1;height:1px;background:linear-gradient(90deg,var(--line-2),transparent)}
-
   .reveal{opacity:0;transform:translateY(28px);transition:.7s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1;transform:none}
 
-  /* ---------- ABOUT ---------- */
-  .about{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:start}
-  .about p{font-size:17px;color:var(--ink-dim);margin-bottom:18px}
+  .about{display:grid;grid-template-columns:1.35fr 1fr;gap:32px;align-items:start}
+  .about p{font-size:16.5px;color:var(--ink-dim);margin-bottom:16px}
   .about p b{color:var(--ink);font-weight:500}
-  .about-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px;font-family:var(--mono);font-size:13px}
-  .about-card .row{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px dashed var(--line-2);color:var(--ink-dim)}
-  .about-card .row:last-child{border-bottom:none}
-  .about-card .row span:last-child{color:var(--green)}
+  .mon{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .mon-h{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:11.5px;color:var(--ink-faint);margin-bottom:16px;text-transform:uppercase;letter-spacing:.5px}
+  .mon-h .live{color:var(--green);display:flex;align-items:center;gap:6px}
+  .mon-h .live i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 1.6s infinite}
+  .metric{margin-bottom:16px}.metric:last-child{margin-bottom:0}
+  .metric .top{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;margin-bottom:6px}
+  .metric .top b{color:var(--green)}
+  .bar{height:6px;border-radius:6px;background:var(--bg-2);overflow:hidden}
+  .bar i{display:block;height:100%;width:0;border-radius:6px;background:linear-gradient(90deg,var(--green-deep),var(--green));transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+  .spark{display:flex;align-items:flex-end;gap:3px;height:46px;margin-top:6px}
+  .spark span{flex:1;background:linear-gradient(180deg,var(--green),var(--green-deep));border-radius:2px;opacity:.85;animation:spark 1.6s ease-in-out infinite}
+  @keyframes spark{0%,100%{transform:scaleY(.55)}50%{transform:scaleY(1)}}
   @media(max-width:760px){.about{grid-template-columns:1fr}}
 
-  /* ---------- EXPERIENCE ---------- */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:40px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .stat{background:var(--panel);padding:22px 20px;transition:.3s}
+  .stat:hover{background:var(--panel-2)}
+  .stat .n{font-family:var(--mono);font-weight:800;font-size:clamp(22px,3vw,30px);color:var(--green)}
+  .stat .k{font-size:11.5px;color:var(--ink-faint);font-family:var(--mono);margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
+  @media(max-width:680px){.stats{grid-template-columns:repeat(2,1fr)}}
+
   .timeline{position:relative;padding-left:30px}
   .timeline::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:1px;background:var(--line-2)}
-  .job{position:relative;padding-bottom:46px}
-  .job:last-child{padding-bottom:0}
+  .job{position:relative;padding-bottom:46px}.job:last-child{padding-bottom:0}
   .job::before{content:"";position:absolute;left:-27px;top:6px;width:15px;height:15px;border-radius:50%;background:var(--bg);border:2px solid var(--green);box-shadow:0 0 14px var(--glow)}
   .job .when{font-family:var(--mono);font-size:12.5px;color:var(--amber);text-transform:uppercase;letter-spacing:.5px}
   .job h3{font-size:21px;font-weight:600;margin:6px 0 2px}
-  .job .co{font-family:var(--mono);font-size:13.5px;color:var(--green);margin-bottom:14px}
-  .job .proj{font-family:var(--mono);font-size:12.5px;color:var(--ink-faint);margin-bottom:12px;line-height:1.5}
+  .job .co{font-family:var(--mono);font-size:13.5px;color:var(--green);margin-bottom:12px}
+  .job .proj{font-family:var(--mono);font-size:12px;color:var(--ink-faint);margin-bottom:12px;line-height:1.6}
   .job .proj b{color:var(--ink-dim);font-weight:500}
   .job ul{list-style:none;display:flex;flex-direction:column;gap:9px}
   .job li{position:relative;padding-left:22px;color:var(--ink-dim);font-size:15px}
   .job li::before{content:"▸";position:absolute;left:0;color:var(--green-deep)}
   .job li b{color:var(--ink);font-weight:500}
 
-  /* ---------- PROJECTS ---------- */
-  .projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
-  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;transition:.25s;cursor:default}
-  .pcard:hover{border-color:var(--green-deep);transform:translateY(-4px);background:var(--bg-2)}
+  .projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;transition:.28s;position:relative;overflow:hidden}
+  .pcard::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),transparent);transform:scaleX(0);transform-origin:left;transition:.35s}
+  .pcard:hover{border-color:var(--green-deep);transform:translateY(-5px);background:var(--bg-2)}
+  .pcard:hover::after{transform:scaleX(1)}
   .pcard .pi{font-family:var(--mono);font-size:11px;color:var(--ink-faint)}
   .pcard h4{font-size:16px;font-weight:600;margin:8px 0 6px}
   .pcard p{font-size:13px;color:var(--ink-dim)}
 
-  /* ---------- SKILLS ---------- */
+  .marquee{margin-top:24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:18px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+  .marquee .track{display:flex;width:max-content;animation:scroll 26s linear infinite}
+  .marquee .track span{display:flex;align-items:center;gap:42px;padding-right:42px;font-family:var(--mono);font-size:14px;color:var(--ink-dim)}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
   .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-  .skill-block{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px}
+  .skill-block{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px;transition:.28s}
+  .skill-block:hover{border-color:var(--line-2);transform:translateY(-3px)}
   .skill-block .label{font-family:var(--mono);font-size:12px;color:var(--green);text-transform:uppercase;letter-spacing:.6px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
   .skill-block .label::before{content:"#";color:var(--ink-faint)}
   .chips{display:flex;flex-wrap:wrap;gap:8px}
-  .chip{font-family:var(--mono);font-size:12.5px;padding:6px 12px;border:1px solid var(--line-2);border-radius:7px;color:var(--ink-dim);transition:.2s}
-  .chip:hover{border-color:var(--green);color:var(--green);background:rgba(52,226,160,.06)}
+  .chip{font-family:var(--mono);font-size:12.5px;padding:6px 12px;border:1px solid var(--line-2);border-radius:7px;color:var(--ink-dim);transition:.2s;cursor:default}
+  .chip:hover{border-color:var(--green);color:var(--green);background:rgba(62,233,164,.06);transform:translateY(-2px)}
   @media(max-width:680px){.skills{grid-template-columns:1fr}}
 
-  /* ---------- EDUCATION ---------- */
   .edu{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .ecard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:24px}
+  .ecard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:24px;transition:.28s}
+  .ecard:hover{border-color:var(--line-2);transform:translateY(-3px)}
   .ecard .et{font-family:var(--mono);font-size:11px;color:var(--amber);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px}
   .ecard h4{font-size:17px;font-weight:600;margin-bottom:5px}
   .ecard p{font-size:14px;color:var(--ink-dim)}
+  .ecard .elink{color:var(--green);text-decoration:none;border-bottom:1px dashed var(--green-deep);transition:.2s;font-weight:500}
+  .ecard .elink:hover{color:#fff;border-bottom-color:var(--green)}
   @media(max-width:680px){.edu{grid-template-columns:1fr}}
 
-  /* ---------- CONTACT ---------- */
-  .contact{text-align:center;padding:110px 0 90px}
+  .contact{text-align:center;padding:110px 0 84px}
   .contact .idx{font-family:var(--mono);color:var(--green);font-size:14px;font-weight:700}
   .contact h2{font-weight:800;font-size:clamp(34px,6vw,64px);letter-spacing:-.03em;margin:14px 0 18px}
-  .contact p{color:var(--ink-dim);max-width:480px;margin:0 auto 38px;font-size:17px}
-  .links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-
+  .contact p{color:var(--ink-dim);max-width:480px;margin:0 auto 36px;font-size:17px}
+  .links{display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
   footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;font-family:var(--mono);font-size:12px;color:var(--ink-faint)}
   footer .green{color:var(--green-deep)}
 </style>
 </head>
 <body>
+<div id="prog"></div>
+<div id="spot"></div>
 
-<nav>
-  <div class="nav-in">
-    <div class="brand"><span class="dot"></span>nihan@devops:~$</div>
-    <div class="nav-links">
-      <a href="#about">about</a>
-      <a href="#experience">experience</a>
-      <a href="#skills">stack</a>
-      <a href="#contact">contact</a>
-    </div>
-  </div>
-</nav>
+<nav><div class="nav-in">
+  <div class="brand"><span class="dot"></span>nihan@devops:~$</div>
+  <div class="nav-links"><a href="#about">about</a><a href="#experience">experience</a><a href="#skills">stack</a><a href="#contact">contact</a></div>
+</div></nav>
 
-<header>
-  <div class="wrap">
-    <span class="term-tag"><span class="blink"></span> available for opportunities · Dhaka, BD</span>
-    <h1>
-      <span class="l1">MD. Saidur</span>
-      <span class="l2">Rahman Nihan</span>
-    </h1>
-    <div class="role">&gt; DevOps Engineer <b>// CI/CD · Containers · Cloud Infra</b></div>
-    <p class="hero-sub">I automate pipelines, containerize applications, and run resilient infrastructure for enterprise healthcare and SaaS platforms — turning manual, fragile deployments into fast, observable, repeatable systems.</p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="#contact">Get in touch →</a>
-      <a class="btn btn-ghost" href="https://github.com/Nihandops" target="_blank" rel="noopener">View GitHub</a>
-    </div>
-
-    <div class="stats">
-      <div class="stat"><div class="n">2+</div><div class="k">Years in DevOps</div></div>
-      <div class="stat"><div class="n">50%</div><div class="k">Faster deploys</div></div>
-      <div class="stat"><div class="n">99.9%</div><div class="k">Uptime achieved</div></div>
-      <div class="stat"><div class="n">10+</div><div class="k">Platforms shipped</div></div>
-    </div>
-  </div>
-</header>
-
-<section id="about">
-  <div class="wrap">
-    <div class="sec-head reveal"><span class="idx">01</span><h2>About</h2><span class="rule"></span></div>
-    <div class="about reveal">
-      <div>
-        <p>I'm a <b>DevOps Engineer</b> with hands-on experience automating CI/CD pipelines, containerizing applications, and managing infrastructure across <b>enterprise healthcare and SaaS platforms</b>.</p>
-        <p>My work centers on continuous integration and delivery, infrastructure as code, container orchestration, and cloud environments. I care about the boring stuff that matters: <b>reducing downtime, improving observability, and enabling faster, safer release cycles</b> for cross-functional teams.</p>
-        <p>I've cut deployment time, built failover clusters for high availability, and stood up monitoring stacks that catch problems before users do.</p>
-      </div>
-      <div class="about-card">
-        <div class="row"><span>role</span><span>DevOps Engineer</span></div>
-        <div class="row"><span>location</span><span>Dhaka, BD</span></div>
-        <div class="row"><span>current</span><span>Synesis IT PLC</span></div>
-        <div class="row"><span>focus</span><span>CI/CD · IaC · Cloud</span></div>
-        <div class="row"><span>degree</span><span>B.Sc. ETE '23</span></div>
-        <div class="row"><span>status</span><span>open to work</span></div>
+<header><div class="wrap">
+  <div class="hero-grid">
+    <div>
+      <span class="term-tag"><span class="blink"></span> available for opportunities · Dhaka, BD</span>
+      <h1><span class="l1">MD. Saidur</span><span class="l2">Rahman Nihan</span></h1>
+      <div class="role">&gt; DevOps Engineer <b>// CI/CD · Containers · Cloud Infra</b></div>
+      <p class="hero-sub">I automate pipelines, containerize applications, and run resilient infrastructure for enterprise healthcare and SaaS platforms — turning manual, fragile deployments into fast, observable, repeatable systems.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#contact">Get in touch →</a>
+        <a class="btn btn-ghost" href="https://github.com/Nihandops" target="_blank" rel="noopener">View GitHub</a>
       </div>
     </div>
-  </div>
-</section>
-
-<section id="experience">
-  <div class="wrap">
-    <div class="sec-head reveal"><span class="idx">02</span><h2>Experience</h2><span class="rule"></span></div>
-    <div class="timeline">
-
-      <div class="job reveal">
-        <div class="when">Dec 2025 — Present</div>
-        <h3>DevOps Engineer</h3>
-        <div class="co">Synesis IT PLC · Dhaka, Bangladesh</div>
-        <div class="proj"><b>Key project:</b> Convay — in-house SaaS product</div>
-        <ul>
-          <li>Designed and implemented <b>CI/CD pipelines with Jenkins</b> for automated build, test, and QA deployment; integrated SonarQube for static analysis and technical-debt reduction.</li>
-          <li>Containerized applications with <b>Docker</b> for consistent environments across development, QA, and production.</li>
-          <li>Managed <b>Oracle Cloud Infrastructure (OCI)</b>, provisioning production and bot server instances; automated config management to reduce manual effort.</li>
-          <li>Implemented monitoring and logging with <b>Zabbix, Grafana, and the ELK Stack</b>.</li>
-        </ul>
-      </div>
-
-      <div class="job reveal">
-        <div class="when">Apr 2024 — Nov 2025</div>
-        <h3>Junior DevOps Engineer</h3>
-        <div class="co">eGeneration PLC · Dhaka, Bangladesh</div>
-        <div class="proj"><b>Key projects:</b> BGB HMIS · Sylhet MAG Osmani Medical HMIS · Navy · egAccount · Popular Diagnostic Center · Chokher Sheba Clinic · egHealth</div>
-        <ul>
-          <li>Automated Jenkins CI/CD pipelines <b>cutting manual deployment time by 50%</b>; containerized apps with Docker reducing environment inconsistencies by 40%.</li>
-          <li>Deployed Angular/Gradle apps on Tomcat and PHP apps on an Oracle Linux 9 LAMP stack — <b>+30% deployment efficiency, +25% performance</b>.</li>
-          <li>Built Nginx and Tomcat failover clusters with Keepalived for <b>99.9% availability</b>; configured MySQL with secure access management, cutting errors by 35%.</li>
-          <li>Maintained egHealth across production, QA, and branch environments for major diagnostic centers, ensuring <b>100% uptime</b>.</li>
-          <li>Deployed a <b>Grafana / Prometheus / cAdvisor</b> stack improving observability and issue detection by 50%.</li>
-          <li>Maintained deployment docs reducing onboarding by 40%; collaborated with QA and devs to speed up release cycles by 20%.</li>
-        </ul>
-      </div>
-
-      <div class="job reveal">
-        <div class="when">Dec 2023 — Mar 2024</div>
-        <h3>DevOps Engineer Intern</h3>
-        <div class="co">eGeneration PLC · Dhaka, Bangladesh</div>
-        <ul>
-          <li>Provisioned and configured <b>CentOS and Ubuntu</b> servers in virtualized environments with documented build procedures, reducing setup time.</li>
-          <li>Deployed <b>HAProxy load balancing</b> and configured Nginx/Tomcat for PHP application delivery; gained foundational CI/CD and automation experience.</li>
-          <li>Assisted senior engineers with server health monitoring and maintenance, contributing to improved system stability.</li>
-        </ul>
-      </div>
-
+    <div class="term">
+      <div class="term-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>deploy.sh — production</span></div>
+      <div class="term-body" id="termBody"></div>
     </div>
   </div>
-</section>
 
-<section id="projects">
-  <div class="wrap">
-    <div class="sec-head reveal"><span class="idx">03</span><h2>Selected Projects</h2><span class="rule"></span></div>
-    <div class="projects">
-      <div class="pcard reveal"><div class="pi">// SaaS</div><h4>Convay</h4><p>In-house SaaS platform with full Jenkins CI/CD, Docker, and OCI-managed infrastructure.</p></div>
-      <div class="pcard reveal"><div class="pi">// Healthcare</div><h4>egHealth</h4><p>Multi-environment deployment for major diagnostic centers at 100% uptime.</p></div>
-      <div class="pcard reveal"><div class="pi">// HMIS</div><h4>BGB &amp; Osmani Medical</h4><p>Hospital management information systems with automated, repeatable deployments.</p></div>
-      <div class="pcard reveal"><div class="pi">// Diagnostics</div><h4>Popular Diagnostic</h4><p>Containerized delivery with Nginx/Tomcat failover and secure MySQL access.</p></div>
-      <div class="pcard reveal"><div class="pi">// Defense</div><h4>Navy &amp; egAccount</h4><p>Enterprise deployments with monitoring, logging, and high-availability clustering.</p></div>
-      <div class="pcard reveal"><div class="pi">// Clinic</div><h4>Chokher Sheba</h4><p>End-to-end pipeline automation and observability with Grafana &amp; Prometheus.</p></div>
-    </div>
+  <div class="pipeline" id="pipeline">
+    <div class="stage"><div class="ic">⎇</div><div class="nm">commit</div></div>
+    <div class="conn"></div>
+    <div class="stage"><div class="ic">⚙</div><div class="nm">build</div></div>
+    <div class="conn"></div>
+    <div class="stage"><div class="ic">✓</div><div class="nm">test</div></div>
+    <div class="conn"></div>
+    <div class="stage"><div class="ic">▦</div><div class="nm">containerize</div></div>
+    <div class="conn"></div>
+    <div class="stage"><div class="ic">☁</div><div class="nm">deploy</div></div>
+    <div class="conn"></div>
+    <div class="stage"><div class="ic">◉</div><div class="nm">monitor</div></div>
   </div>
-</section>
+</div></header>
 
-<section id="skills">
-  <div class="wrap">
-    <div class="sec-head reveal"><span class="idx">04</span><h2>Tech Stack</h2><span class="rule"></span></div>
-    <div class="skills">
-      <div class="skill-block reveal">
-        <div class="label">automation &amp; security</div>
-        <div class="chips"><span class="chip">Jenkins</span><span class="chip">Ansible</span><span class="chip">Terraform</span><span class="chip">SonarQube</span><span class="chip">IAM</span><span class="chip">Firewall</span><span class="chip">Secret Mgmt</span><span class="chip">Access Control</span></div>
-      </div>
-      <div class="skill-block reveal">
-        <div class="label">containers &amp; cloud</div>
-        <div class="chips"><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">AWS EC2</span><span class="chip">S3</span><span class="chip">VPC</span><span class="chip">CloudWatch</span><span class="chip">Oracle Cloud (OCI)</span></div>
-      </div>
-      <div class="skill-block reveal">
-        <div class="label">monitoring &amp; logging</div>
-        <div class="chips"><span class="chip">Grafana</span><span class="chip">Prometheus</span><span class="chip">cAdvisor</span><span class="chip">Zabbix</span><span class="chip">ELK Stack</span><span class="chip">coroot</span></div>
-      </div>
-      <div class="skill-block reveal">
-        <div class="label">servers &amp; databases</div>
-        <div class="chips"><span class="chip">Nginx</span><span class="chip">Apache</span><span class="chip">Tomcat</span><span class="chip">MySQL</span><span class="chip">PostgreSQL</span></div>
-      </div>
-      <div class="skill-block reveal">
-        <div class="label">scripting &amp; os</div>
-        <div class="chips"><span class="chip">Bash</span><span class="chip">Shell</span><span class="chip">Ubuntu</span><span class="chip">CentOS</span><span class="chip">RHEL</span><span class="chip">Oracle Linux</span><span class="chip">Git</span><span class="chip">GitHub</span></div>
-      </div>
-      <div class="skill-block reveal">
-        <div class="label">messaging &amp; networking</div>
-        <div class="chips"><span class="chip">Kafka</span><span class="chip">Redis</span><span class="chip">RabbitMQ</span><span class="chip">TCP/IP</span><span class="chip">DNS</span><span class="chip">DHCP</span><span class="chip">Load Balancing</span><span class="chip">VMware</span></div>
+<section id="about"><div class="wrap">
+  <div class="sec-head reveal"><span class="idx">01</span><h2>About</h2><span class="rule"></span></div>
+  <div class="about reveal">
+    <div>
+      <p>I'm a <b>DevOps Engineer</b> with hands-on experience automating CI/CD pipelines, containerizing applications, and managing infrastructure across <b>enterprise healthcare and SaaS platforms</b>.</p>
+      <p>My work centers on continuous integration and delivery, infrastructure as code, container orchestration, and cloud environments. I care about the parts that quietly keep a business running: <b>reducing downtime, improving observability, and enabling faster, safer releases</b> for cross-functional teams.</p>
+      <p>I've cut deployment times in half, built failover clusters for high availability, and stood up monitoring stacks that catch problems before users ever feel them.</p>
+      <div class="stats" id="stats">
+        <div class="stat"><div class="n" data-to="2" data-suf="+">0</div><div class="k">Years in DevOps</div></div>
+        <div class="stat"><div class="n" data-to="50" data-suf="%">0</div><div class="k">Faster deploys</div></div>
+        <div class="stat"><div class="n" data-to="99.9" data-suf="%">0</div><div class="k">Uptime</div></div>
+        <div class="stat"><div class="n" data-to="10" data-suf="+">0</div><div class="k">Platforms</div></div>
       </div>
     </div>
-  </div>
-</section>
-
-<section id="education">
-  <div class="wrap">
-    <div class="sec-head reveal"><span class="idx">05</span><h2>Education &amp; Training</h2><span class="rule"></span></div>
-    <div class="edu">
-      <div class="ecard reveal">
-        <div class="et">degree</div>
-        <h4>B.Sc. Electronic &amp; Telecommunication Engineering</h4>
-        <p>East West University · 2023</p>
-      </div>
-      <div class="ecard reveal">
-        <div class="et">certifications</div>
-        <h4>UIU Cisco Network Academy — DevOps Course</h4>
-        <p>AWS, Jenkins, Ansible, Docker, Kubernetes<br>Mastering AWS &amp; DevOps — Poridhi.io (ongoing)</p>
-      </div>
+    <div class="mon">
+      <div class="mon-h"><span>system_health.monitor</span><span class="live"><i></i>LIVE</span></div>
+      <div class="metric"><div class="top"><span>uptime</span><b>99.9%</b></div><div class="bar"><i data-w="99"></i></div></div>
+      <div class="metric"><div class="top"><span>deploy_efficiency</span><b>+30%</b></div><div class="bar"><i data-w="78"></i></div></div>
+      <div class="metric"><div class="top"><span>issue_detection</span><b>+50%</b></div><div class="bar"><i data-w="88"></i></div></div>
+      <div class="metric"><div class="top"><span>throughput</span><b style="color:var(--amber)">nominal</b></div><div class="spark" id="spark"></div></div>
     </div>
   </div>
-</section>
+</div></section>
 
-<section class="contact" id="contact">
-  <div class="wrap">
-    <div class="idx">06 // let's build</div>
-    <h2>Let's deploy<br>something great.</h2>
-    <p>Open to DevOps and infrastructure roles. Reach out — I usually reply fast.</p>
-    <div class="links">
-      <a class="btn btn-primary" href="mailto:md.srnihan@gmail.com">md.srnihan@gmail.com</a>
-      <a class="btn btn-ghost" href="https://linkedin.com/in/sr-nihan/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn btn-ghost" href="https://github.com/Nihandops" target="_blank" rel="noopener">GitHub</a>
-      <a class="btn btn-ghost" href="tel:+8801638128186">+880 1638 128186</a>
+<section id="experience"><div class="wrap">
+  <div class="sec-head reveal"><span class="idx">02</span><h2>Experience</h2><span class="rule"></span></div>
+  <div class="timeline">
+    <div class="job reveal">
+      <div class="when">Dec 2025 — Present</div><h3>DevOps Engineer</h3>
+      <div class="co">Synesis IT PLC · Dhaka, Bangladesh</div>
+      <div class="proj"><b>Key project:</b> Convay — in-house SaaS product</div>
+      <ul>
+        <li>Designed and implemented <b>CI/CD pipelines with Jenkins</b> for automated build, test, and QA deployment; integrated SonarQube for static analysis and technical-debt reduction.</li>
+        <li>Containerized applications with <b>Docker</b> for consistent environments across development, QA, and production.</li>
+        <li>Managed <b>Oracle Cloud Infrastructure (OCI)</b>, provisioning production and bot server instances; automated config management to reduce manual effort.</li>
+        <li>Implemented monitoring and logging with <b>Zabbix, Grafana, and the ELK Stack</b>.</li>
+      </ul>
+    </div>
+    <div class="job reveal">
+      <div class="when">Apr 2024 — Nov 2025</div><h3>Junior DevOps Engineer</h3>
+      <div class="co">eGeneration PLC · Dhaka, Bangladesh</div>
+      <div class="proj"><b>Key projects:</b> BGB HMIS · Sylhet MAG Osmani Medical HMIS · Navy · egAccount · Popular Diagnostic Center · Chokher Sheba Clinic · egHealth</div>
+      <ul>
+        <li>Automated Jenkins CI/CD pipelines <b>cutting manual deployment time by 50%</b>; containerized apps with Docker reducing environment inconsistencies by 40%.</li>
+        <li>Deployed Angular/Gradle apps on Tomcat and PHP apps on an Oracle Linux 9 LAMP stack — <b>+30% deployment efficiency, +25% performance</b>.</li>
+        <li>Built Nginx and Tomcat failover clusters with Keepalived for <b>99.9% availability</b>; configured MySQL with secure access management, cutting errors by 35%.</li>
+        <li>Maintained egHealth across production, QA, and branch environments for major diagnostic centers, ensuring <b>100% uptime</b>.</li>
+        <li>Deployed a <b>Grafana / Prometheus / cAdvisor</b> stack improving observability and issue detection by 50%.</li>
+        <li>Maintained deployment docs reducing onboarding by 40%; collaborated with QA and devs to speed up release cycles by 20%.</li>
+      </ul>
+    </div>
+    <div class="job reveal">
+      <div class="when">Dec 2023 — Mar 2024</div><h3>DevOps Engineer Intern</h3>
+      <div class="co">eGeneration PLC · Dhaka, Bangladesh</div>
+      <ul>
+        <li>Provisioned and configured <b>CentOS and Ubuntu</b> servers in virtualized environments with documented build procedures, reducing setup time.</li>
+        <li>Deployed <b>HAProxy load balancing</b> and configured Nginx/Tomcat for PHP application delivery; gained foundational CI/CD and automation experience.</li>
+        <li>Assisted senior engineers with server health monitoring and maintenance, contributing to improved system stability.</li>
+      </ul>
     </div>
   </div>
-</section>
+</div></section>
 
-<footer>
-  <div class="wrap">
-    <span class="green">$</span> built &amp; deployed by MD. Saidur Rahman Nihan · Dhaka, Bangladesh · 2026
+<section id="projects"><div class="wrap">
+  <div class="sec-head reveal"><span class="idx">03</span><h2>Selected Projects</h2><span class="rule"></span></div>
+  <div class="projects">
+    <div class="pcard reveal"><div class="pi">// SaaS</div><h4>Convay</h4><p>In-house SaaS platform with full Jenkins CI/CD, Docker, and OCI-managed infrastructure.</p></div>
+    <div class="pcard reveal"><div class="pi">// Healthcare</div><h4>egHealth</h4><p>Multi-environment deployment for major diagnostic centers at 100% uptime.</p></div>
+    <div class="pcard reveal"><div class="pi">// HMIS</div><h4>BGB &amp; Osmani Medical</h4><p>Hospital management information systems with automated, repeatable deployments.</p></div>
+    <div class="pcard reveal"><div class="pi">// Diagnostics</div><h4>Popular Diagnostic</h4><p>Containerized delivery with Nginx/Tomcat failover and secure MySQL access.</p></div>
+    <div class="pcard reveal"><div class="pi">// Defense</div><h4>Navy &amp; egAccount</h4><p>Enterprise deployments with monitoring, logging, and high-availability clustering.</p></div>
+    <div class="pcard reveal"><div class="pi">// Clinic</div><h4>Chokher Sheba</h4><p>End-to-end pipeline automation and observability with Grafana &amp; Prometheus.</p></div>
   </div>
-</footer>
+  <div class="marquee reveal"><div class="track">
+    <span>Jenkins Docker Kubernetes AWS Terraform Ansible Grafana Prometheus ELK Nginx Kafka Redis</span>
+    <span>Jenkins Docker Kubernetes AWS Terraform Ansible Grafana Prometheus ELK Nginx Kafka Redis</span>
+  </div></div>
+</div></section>
+
+<section id="skills"><div class="wrap">
+  <div class="sec-head reveal"><span class="idx">04</span><h2>Tech Stack</h2><span class="rule"></span></div>
+  <div class="skills">
+    <div class="skill-block reveal"><div class="label">automation &amp; security</div><div class="chips"><span class="chip">Jenkins</span><span class="chip">Ansible</span><span class="chip">Terraform</span><span class="chip">SonarQube</span><span class="chip">IAM</span><span class="chip">Firewall</span><span class="chip">Secret Mgmt</span><span class="chip">Access Control</span></div></div>
+    <div class="skill-block reveal"><div class="label">containers &amp; cloud</div><div class="chips"><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">AWS EC2</span><span class="chip">S3</span><span class="chip">VPC</span><span class="chip">CloudWatch</span><span class="chip">Oracle Cloud (OCI)</span></div></div>
+    <div class="skill-block reveal"><div class="label">monitoring &amp; logging</div><div class="chips"><span class="chip">Grafana</span><span class="chip">Prometheus</span><span class="chip">cAdvisor</span><span class="chip">Zabbix</span><span class="chip">ELK Stack</span><span class="chip">coroot</span></div></div>
+    <div class="skill-block reveal"><div class="label">servers &amp; databases</div><div class="chips"><span class="chip">Nginx</span><span class="chip">Apache</span><span class="chip">Tomcat</span><span class="chip">MySQL</span><span class="chip">PostgreSQL</span></div></div>
+    <div class="skill-block reveal"><div class="label">scripting &amp; os</div><div class="chips"><span class="chip">Bash</span><span class="chip">Shell</span><span class="chip">Ubuntu</span><span class="chip">CentOS</span><span class="chip">RHEL</span><span class="chip">Oracle Linux</span><span class="chip">Git</span><span class="chip">GitHub</span></div></div>
+    <div class="skill-block reveal"><div class="label">messaging &amp; networking</div><div class="chips"><span class="chip">Kafka</span><span class="chip">Redis</span><span class="chip">RabbitMQ</span><span class="chip">TCP/IP</span><span class="chip">DNS</span><span class="chip">DHCP</span><span class="chip">Load Balancing</span><span class="chip">VMware</span></div></div>
+  </div>
+</div></section>
+
+<section id="education"><div class="wrap">
+  <div class="sec-head reveal"><span class="idx">05</span><h2>Education &amp; Training</h2><span class="rule"></span></div>
+  <div class="edu">
+    <div class="ecard reveal"><div class="et">degree</div><h4>B.Sc. Electronic &amp; Telecommunication Engineering</h4><p>East West University · 2023</p></div>
+    <div class="ecard reveal"><div class="et">certifications</div><h4>UIU Cisco Network Academy — DevOps Course</h4><p>AWS, Jenkins, Ansible, Docker, Kubernetes<br>Mastering AWS &amp; DevOps — <a href="https://poridhi.io" target="_blank" rel="noopener" class="elink">Poridhi.io</a> (ongoing)</p></div>
+  </div>
+</div></section>
+
+<section class="contact" id="contact"><div class="wrap">
+  <div class="idx">06 // let's build</div>
+  <h2>Let's deploy<br>something great.</h2>
+  <p>Open to DevOps and infrastructure roles. Reach out — I usually reply fast.</p>
+  <div class="links">
+    <a class="btn btn-primary" href="mailto:md.srnihan@gmail.com">md.srnihan@gmail.com</a>
+    <a class="btn btn-ghost" href="https://linkedin.com/in/sr-nihan/" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn btn-ghost" href="https://github.com/Nihandops" target="_blank" rel="noopener">GitHub</a>
+    <a class="btn btn-ghost" href="tel:+8801638128186">+880 1638 128186</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><span class="green">$</span> built &amp; deployed by MD. Saidur Rahman Nihan · Dhaka, Bangladesh · 2026</div></footer>
 
 <script>
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach((e,i)=>{
+  const prog=document.getElementById('prog');
+  addEventListener('scroll',()=>{const h=document.documentElement;prog.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';},{passive:true});
+  const spot=document.getElementById('spot');
+  addEventListener('pointermove',e=>{spot.style.setProperty('--mx',e.clientX+'px');spot.style.setProperty('--my',e.clientY+'px');},{passive:true});
+
+  const lines=[
+    {c:'p',x:'git push origin main'},
+    {c:'out',x:'→ webhook received · triggering jenkins pipeline'},
+    {c:'ok',x:'✓ build · test · sonarqube  [passed]'},
+    {c:'c',x:'$ docker build -t convay:latest .'},
+    {c:'ok',x:'✓ image built · pushed to registry'},
+    {c:'c',x:'$ deploy → oci production'},
+    {c:'am',x:'◷ rolling update · 0 downtime'},
+    {c:'ok',x:'✓ deployed · uptime 99.9% · all green'}
+  ];
+  const body=document.getElementById('termBody');
+  let li=0,ci=0,cur=null;
+  function type(){
+    if(li>=lines.length){setTimeout(()=>{body.innerHTML='';li=0;ci=0;type();},3200);return;}
+    if(ci===0){cur=document.createElement('div');const s=document.createElement('span');s.className=lines[li].c;cur.appendChild(s);cur._s=s;body.appendChild(cur);const cz=document.createElement('span');cz.id='cursor';body.appendChild(cz);}
+    const full=lines[li].x;
+    if(ci<full.length){cur._s.textContent+=full[ci];ci++;setTimeout(type,full[ci-1]===' '?22:34);}
+    else{li++;ci=0;setTimeout(type,360);}
+  }
+  type();
+
+  function countUp(el){const to=parseFloat(el.dataset.to),suf=el.dataset.suf||'',dec=(to%1!==0)?1:0;let s=null;function step(ts){if(!s)s=ts;const p=Math.min((ts-s)/1100,1);const e=1-Math.pow(1-p,3);el.textContent=(to*e).toFixed(dec)+suf;if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);}
+
+  const spark=document.getElementById('spark');
+  for(let i=0;i<22;i++){const b=document.createElement('span');b.style.animationDelay=(i*0.07)+'s';spark.appendChild(b);}
+
+  const io=new IntersectionObserver((ents)=>{
+    ents.forEach((e,i)=>{
       if(e.isIntersecting){
-        setTimeout(()=>e.target.classList.add('in'), (i%4)*70);
+        setTimeout(()=>e.target.classList.add('in'),(i%4)*70);
+        if(e.target.querySelector){
+          e.target.querySelectorAll('.n[data-to]').forEach(countUp);
+          e.target.querySelectorAll('.bar i').forEach(b=>b.style.width=b.dataset.w+'%');
+        }
         io.unobserve(e.target);
       }
     });
-  },{threshold:.12});
+  },{threshold:.15});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-  // smooth-scroll offset for fixed nav
-  document.querySelectorAll('.nav-links a, .hero-cta a[href^="#"], .contact a[href^="#"]').forEach(a=>{
-    a.addEventListener('click',ev=>{
-      const id=a.getAttribute('href');
-      if(id&&id.startsWith('#')){
-        const t=document.querySelector(id);
-        if(t){ev.preventDefault();window.scrollTo({top:t.offsetTop-60,behavior:'smooth'});}
-      }
-    });
-  });
+  const stages=[...document.querySelectorAll('.stage')];
+  const conns=[...document.querySelectorAll('.conn')];
+  let pi=0;
+  function pipe(){
+    if(pi<stages.length){
+      stages[pi].classList.add('active');
+      if(pi>0){stages[pi-1].classList.remove('active');stages[pi-1].classList.add('done');if(conns[pi-1])conns[pi-1].classList.add('flow');}
+      pi++;setTimeout(pipe,720);
+    }else{setTimeout(()=>{stages.forEach(s=>s.classList.remove('active','done'));conns.forEach(c=>c.classList.remove('flow'));pi=0;pipe();},1600);}
+  }
+  setTimeout(pipe,1400);
+
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',ev=>{const id=a.getAttribute('href');const t=id&&id.length>1?document.querySelector(id):null;if(t){ev.preventDefault();scrollTo({top:t.offsetTop-60,behavior:'smooth'});}});});
 </script>
 </body>
 </html>
