@@ -156,6 +156,8 @@
   .ecard p{font-size:14px;color:var(--ink-dim)}
   .ecard .elink{color:var(--green);text-decoration:none;border-bottom:1px dashed var(--green-deep);transition:.2s;font-weight:500}
   .ecard .elink:hover{color:#fff;border-bottom-color:var(--green)}
+  .clink{color:var(--green);font-weight:700;text-decoration:none;border-bottom:1px solid var(--green-deep);transition:.2s}
+  .clink:hover{color:#fff;border-bottom-color:var(--green)}
   @media(max-width:680px){.edu{grid-template-columns:1fr}}
 
   .talks{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
@@ -255,7 +257,7 @@
     <div class="job reveal">
       <div class="when">Dec 2025 — Present</div><h3>DevOps Engineer</h3>
       <div class="co">Synesis IT PLC · Dhaka, Bangladesh</div>
-      <div class="proj"><b>Key project:</b> Convay.com — in-house SaaS product</div>
+      <div class="proj"><b>Key project:</b> <a href="https://convay.com" target="_blank" rel="noopener" class="clink">Convay</a> — in-house SaaS product</div>
       <ul>
         <li>Designed and implemented <b>CI/CD pipelines with Jenkins</b> for automated build, test, and QA deployment; integrated SonarQube for static analysis and technical-debt reduction.</li>
         <li>Containerized applications with <b>Docker</b> for consistent environments across development, QA, and production.</li>
@@ -291,7 +293,7 @@
 <section id="projects"><div class="wrap">
   <div class="sec-head reveal"><span class="idx">03</span><h2>Selected Projects</h2><span class="rule"></span></div>
   <div class="projects">
-    <div class="pcard reveal"><div class="pi">// SaaS</div><h4>Convay</h4><p>In-house SaaS platform with full Jenkins CI/CD, Docker, and OCI-managed infrastructure.</p></div>
+    <div class="pcard reveal"><div class="pi">// SaaS</div><h4><a href="https://convay.com" target="_blank" rel="noopener" class="clink">Convay</a></h4><p>In-house SaaS platform with full Jenkins CI/CD, Docker, and OCI-managed infrastructure.</p></div>
     <div class="pcard reveal"><div class="pi">// Healthcare</div><h4>egHealth</h4><p>Multi-environment deployment for major diagnostic centers at 100% uptime.</p></div>
     <div class="pcard reveal"><div class="pi">// HMIS</div><h4>BGB &amp; Osmani Medical</h4><p>Hospital management information systems with automated, repeatable deployments.</p></div>
     <div class="pcard reveal"><div class="pi">// Diagnostics</div><h4>Popular Diagnostic</h4><p>Containerized delivery with Nginx/Tomcat failover and secure MySQL access.</p></div>
